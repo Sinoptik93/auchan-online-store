@@ -17,3 +17,5 @@ class ProductCard  {
     });
   }
 }
+
+export default ProductCard;
