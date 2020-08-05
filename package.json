@@ -1,0 +1,23 @@
+{
+  "name": "auchan-online-store",
+  "version": "1.0.0",
+  "description": "Test task online store with responsive design",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sinoptik93/auchan-online-store.git"
+  },
+  "author": "Chepukhin S.V. <chepukhin.sergey@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sinoptik93/auchan-online-store/issues"
+  },
+  "homepage": "https://github.com/Sinoptik93/auchan-online-store#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
