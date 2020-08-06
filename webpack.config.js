@@ -41,7 +41,22 @@ const cssLoader = (extra) => {
   return loader;
 }
 
-const eslintLoader = () => isDev ? ['eslint-loader'] : [];
+// const jsLoader = () => {
+//   const loader = [{
+//       loader: 'babel-loader',
+//       options: {
+//         presets: [
+//           '@babel/preset-env'
+//         ]
+//       }
+//     }];
+
+//   if (isDev) {
+//     loader.push('eslint-loader');
+//   }
+
+//   return loader;
+// }
 
 module.exports = {
   //Change mode for 'development' or 'production'
@@ -77,11 +92,11 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: eslintLoader()
-      },
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   use: jsLoader()
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/, //exclude folder from work
