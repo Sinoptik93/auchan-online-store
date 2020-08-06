@@ -10,7 +10,15 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-    plugins: [
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@images': path.resolve(__dirname, 'src', 'images'),
+      '@styles': path.resolve(__dirname, 'src', 'styles'),
+      '@fonts': path.resolve(__dirname, 'src', 'fonts')
+    }
+  },
+  plugins: [
       new HTMLWebpackPlugin({
         template: './index.html'
       })
