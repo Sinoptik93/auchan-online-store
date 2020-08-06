@@ -45,7 +45,9 @@ module.exports = {
   //Change mode for 'development' or 'production'
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
-  entry: './index.js',
+  entry: {
+    main: ['@babel/polyfill', './index.js']
+  },
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
@@ -73,6 +75,18 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/, //exclude folder from work
+        loader: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env'
+            ]
+          }
+        }
+      },
       {
         test: /\.css$/,
         use:cssLoader()
