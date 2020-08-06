@@ -20,13 +20,15 @@ const optimization = () => {
   return config;
 }
 
+const filename = (extension) => isDev ? `[name].${extension}` : `[name].[hash].${extension}`;
+
 module.exports = {
   //Change mode for 'development' or 'production'
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
   entry: './index.js',
   output: {
-    filename: 'bundle.js',
+    filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
@@ -46,7 +48,7 @@ module.exports = {
         }
       }),
       new MinCSSExtractPlugin({
-        filename: '[name].[contenthash].css'
+        filename: filename('css')
       })
   ],
   module: {
