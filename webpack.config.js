@@ -59,6 +59,7 @@ module.exports = {
     }
   },
   optimization: optimization(),
+  devtool: isDev ? 'source-map' : '',
   plugins: [
       new HTMLWebpackPlugin({
         template: './index.html',
