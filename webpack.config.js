@@ -22,6 +22,25 @@ const optimization = () => {
 
 const filename = (extension) => isDev ? `[name].${extension}` : `[name].[hash].${extension}`;
 
+const cssLoader = (extra) => {
+  const loader = [
+    {
+      loader: MinCSSExtractPlugin.loader,
+      options: {
+        hmr: isDev,
+        reloadAll: true
+      }
+    },
+    'css-loader',
+  ];
+
+  if (extra) {
+    loader.push(extra);
+  }
+
+  return loader;
+}
+
 module.exports = {
   //Change mode for 'development' or 'production'
   mode: 'development',
@@ -55,30 +74,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: MinCSSExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true
-            }
-          },
-          'css-loader'
-        ]
+        use:cssLoader()
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: MinCSSExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true
-            }
-          },
-          'css-loader',
-          'sass-loader'
-        ] 
+        use: cssLoader('sass-loader')
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
