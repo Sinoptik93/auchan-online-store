@@ -1,9 +1,24 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MinCSSExtractPlugin = require('mini-css-extract-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
+
+const optimization = () => {
+  const config = {};
+  
+  if (isProd) {
+    config.minimizer = [
+      new TerserWebpackPlugin(),
+      new OptimizeCSSAssetsWebpackPlugin(),
+    ]
+  }
+
+  return config;
+}
 
 module.exports = {
   //Change mode for 'development' or 'production'
@@ -22,6 +37,7 @@ module.exports = {
       '@fonts': path.resolve(__dirname, 'src', 'fonts')
     }
   },
+  optimization: optimization(),
   plugins: [
       new HTMLWebpackPlugin({
         template: './index.html',
