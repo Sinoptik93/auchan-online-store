@@ -41,6 +41,8 @@ const cssLoader = (extra) => {
   return loader;
 }
 
+const eslintLoader = () => isDev ? ['eslint-loader'] : [];
+
 module.exports = {
   //Change mode for 'development' or 'production'
   mode: 'development',
@@ -75,6 +77,11 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: eslintLoader()
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/, //exclude folder from work
