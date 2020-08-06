@@ -55,7 +55,30 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [MinCSSExtractPlugin.loader, 'css-loader']
+        use: [
+          {
+            loader: MinCSSExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MinCSSExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
+          'css-loader',
+          'sass-loader'
+        ] 
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
