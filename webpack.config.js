@@ -2,6 +2,9 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MinCSSExtractPlugin = require('mini-css-extract-plugin');
 
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
+
 module.exports = {
   //Change mode for 'development' or 'production'
   mode: 'development',
@@ -21,7 +24,10 @@ module.exports = {
   },
   plugins: [
       new HTMLWebpackPlugin({
-        template: './index.html'
+        template: './index.html',
+        minify: {
+          collapseWhitespace: isProd,
+        }
       }),
       new MinCSSExtractPlugin({
         filename: '[name].[contenthash].css'
